@@ -1498,7 +1498,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .gallery-a > li {
     position: relative;
     float: left;
-    width: 300px;
+    width: 258px;
     height: 230px;
     margin: 0 30px 50px 0;
     background: url(../images/pink/border-a.png) center 100% no-repeat;
@@ -4841,7 +4841,16 @@ svg:not(:root) {
 /* meus scripts */
 
 #logomarca {
-    position: absolute;
     left: 500px;
     width: 140px;
+    margin: 0 0 0 170px;
+}
+
+#pictures{
+    width: 952px;
+}
+
+#pictures .link-a{
+    width: 400px;
+    margin: 15px auto;
 }
