@@ -4841,16 +4841,18 @@ svg:not(:root) {
 /* meus scripts */
 
 #logomarca {
-    left: 500px;
+    position: absolute;
     width: 140px;
-    margin: 0 0 0 170px;
+    right: inherit;
+    left: 25%;
+    top: 0;
 }
 
-#pictures{
+#pictures {
     width: 952px;
 }
 
-#pictures .link-a{
+#pictures .link-a {
     width: 400px;
     margin: 15px auto;
 }
