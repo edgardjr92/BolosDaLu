@@ -1913,7 +1913,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 .news-a footer {
-    margin: 44px 0 0;
     font-family: Tahoma, Geneva, sans-serif;
 }
 
@@ -1931,7 +1930,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .news-a footer > ul > li {
     position: relative;
     min-height: 100px;
-    padding: 21px 0 0 109px;
     font-size: 1.2em;
     line-height: 1.5;
 }
@@ -4855,4 +4853,10 @@ svg:not(:root) {
 #pictures .link-a {
     width: 400px;
     margin: 15px auto;
+}
+
+
+.module-content .cols-a{
+    background: none;
+    border: none;
 }
