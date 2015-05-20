@@ -10,10 +10,11 @@
 
 {% block content %}
     <input type="hidden" name="page" value="contato">
-    <article class="content">
+    <article class="module-content">
+        <h2>Contato</h2>
+
         <div class="cols-a">
             <article>
-                <h3>Contato</h3>
                 <div id="alert">
                     <div class="message"></div>
                 </div>
@@ -25,33 +26,40 @@
                         <legend>Envie-nos um e-mail:</legend>
                         <p>
 									<span>
-										<label for="ca">Your name:</label>
+										<label for="ca">Seu name:</label>
 										<input type="text" id="ca" name="name" required>
 									</span>
 									<span>
-										<label for="cb">Your email:</label>
+										<label for="cb">Seu email:</label>
 										<input type="text" id="cb" name="email" required>
 									</span>
                         </p>
 
                         <p>
-                            <label for="cd">Subject:</label>
+                            <label for="cd">Assunto:</label>
                             <input name="subject" type="text" id="cd" required>
                         </p>
 
                         <p>
-                            <label for="cc">Message:</label>
+                        <div class="inputFile">
+                            <span>Selecione uma foto:</span>
+                            <input type="file" name="arquivo" id="arquivo"/>
+                        </div>
+                        </p>
+
+                        <p>
+                            <label for="cc">Mensagem:</label>
                             <textarea id="cc" name="msg" required></textarea>
                         </p>
 
                         <p>
-                            <button type="submit">Send</button>
+                            <button type="submit">Enviar</button>
                         </p>
                     </fieldset>
                 </form>
             </article>
             <aside class="vcard">
-                <h3>Contact Info:</h3>
+                <h3>Informações de Contato:</h3>
                 <h4 class="fn org">Just the best CAKES company</h4>
 
                 <p class="tel">9876.543.210</p>

@@ -2,11 +2,14 @@ $(function () {
     backEventListener();
     deactivateMenu();
     activeMenu();
-
-    if(isHidden('#albums')){
-        backToAlbums();
-    }
+    backToAlbums();
 });
+
+
+$("#arquivo").change(function () {
+    $(this).prev().html($(this).val());
+});
+
 
 $('.link-gallery').click(function () {
     closeAlbums();

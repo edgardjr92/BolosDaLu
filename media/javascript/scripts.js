@@ -2419,7 +2419,7 @@ head.ready(function () {
                 });
                 $('.list-c li:not(.a)').append('<a class="close">Close</a>');
                 $('#root > #contact').append('<div id="map"></div>');
-                $('#map').gmapembedd('London');
+                $('#map').gmapembedd('Rua Miguel de Lemos - Ponta D\'areia, Niterói - RJ');
                 $(window).load(function () {
                     $('#logo a').BlackAndWhite({
                         hoverEffect: true,

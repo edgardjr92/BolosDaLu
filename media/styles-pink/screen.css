@@ -1741,10 +1741,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 #root .module-content {
     position: relative;
-    width: 640px;
+    width: 940px;
     min-height: 320px;
     margin-bottom: 50px;
-    padding: 14px 290px 0 20px;
+    padding: 14px 0 0 20px;
     border: 1px solid #d5d2d2;
     background: #fff;
 }
@@ -4855,8 +4855,35 @@ svg:not(:root) {
     margin: 15px auto;
 }
 
-
-.module-content .cols-a{
+.module-content .cols-a {
     background: none;
     border: none;
+}
+
+.inputFile {
+    width: 618px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    background: #F5F5F5;
+    border: 1px solid #DCD9D9;
+    color: #c15056;
+    font-family: Cambria, Georgia, serif;
+    font-style: italic;
+    line-height: 38px;
+}
+
+.inputFile span {
+    padding: 0 10px;
+    display: block;
+    position: absolute;
+}
+
+.inputFile input {
+    width: 600px;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
