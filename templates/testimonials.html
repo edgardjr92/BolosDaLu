@@ -1,7 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'abstractions/base.html' %}
 
 {% block title %}
     Bolos da Lu - Depoimentos
+{% endblock %}
+
+{% block header %}
+    {% include 'abstractions/header-top.html' %}
 {% endblock %}
 
 {% block content %}
@@ -50,7 +54,7 @@
                                     <label for="cc">Mensagem:</label>
                                     <textarea id="cc" name="cc" required></textarea>
                                 </p>
-                                <button type="submit">Send</button>
+                                <button type="submit">Enviar</button>
                             </fieldset>
                         </form>
                     </footer>

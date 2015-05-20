@@ -1,28 +1,31 @@
 $(function () {
+    backEventListener();
     deactivateMenu();
     activeMenu();
-    backAlbuns();
-    getBackEvent();
+
+    if(isHidden('#albums')){
+        backToAlbums();
+    }
 });
 
 $('.link-gallery').click(function () {
-    closeAlbuns();
+    closeAlbums();
     showPictures();
 });
 
-$('#backAlbuns').click(function(event){
-   backAlbuns();
-   event.preventDefault();
+$('#backAlbums').click(function (event) {
+    backToAlbums();
+    event.preventDefault();
 });
 
-function getBackEvent() {
+// ouvinte quando ação de VOLTAR do browser for realizada
+function backEventListener() {
     if (window.history && window.history.pushState) {
-
         window.history.pushState('forward', null);
 
-        $(window).on('popstate', function (event) {
-            if (getCurrentPage() == 'galeria' && isHidden('#albuns')) {
-                returnForGaleria();
+        $(window).on('popstate', function () {
+            if (getCurrentPage() == 'galeria' && isHidden('#albums')) {
+                backToAlbums();
                 disableBack();
             }
         });
@@ -30,50 +33,55 @@ function getBackEvent() {
     }
 }
 
-function backAlbuns(){
+// retorna para os albuns da galeria
+function backToAlbums() {
     closePictures();
-    showAlbuns();
+    showAlbums();
 }
 
-function returnForGaleria() {
-    closePictures();
-    showAlbuns();
-}
-
-function disableBack(){
+// desabilita a ação VOLTAR do navegador
+function disableBack() {
     window.history.forward();
 }
 
-function showAlbuns() {
-    $('#albuns').show();
+// abre os albuns da galeria
+function showAlbums() {
+    $('#albums').show();
 }
 
-function closeAlbuns() {
-    $('#albuns').hide();
+// fecha os albuns da galeria
+function closeAlbums() {
+    $('#albums').hide();
 }
 
+// abre as fotos da galeria
 function showPictures() {
     $('#pictures').show();
 }
 
+// fecha as fotos da galeria
 function closePictures() {
     $('#pictures').hide();
 }
 
+// ativa o menu da pagina
 function activeMenu() {
     $("li[name=" + getCurrentPage() + "]").addClass('active');
 }
 
+// desativa o menu da pagina
 function deactivateMenu() {
     $("li.active").removeClass('active');
 }
 
+// retorna a pagina atual
 function getCurrentPage() {
     var currentPage = $("input[name='page']").attr('value');
 
     return currentPage;
 }
 
+// verifica se o elemento esta oculto
 function isHidden(id) {
     var isHidden = false;
     if ($(id).css('display') == 'none') {

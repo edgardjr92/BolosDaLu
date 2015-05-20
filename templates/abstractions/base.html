@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="/media/javascript/head.js"></script>
+    <link rel="stylesheet" type="text/css" href="/media/styles-pink/screen.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/media/styles-pink/print.css" media="print">
+    <!--  <link rel="shortcut icon" href="/media/favicon.ico" type="image/x-icon">-->
+</head>
+<body>
+<div id="root">
+    <!-- Header start -->
+    {% block header %}
+    {% endblock %}
+    <!-- Content area start -->
+    <section id="content">
+        {% block content %}
+        {% endblock %}
+        <!-- end triple-a -->
+        <footer id="logo">
+            <h2>Alguns de Nossos Clientes</h2>
+            <ul>
+                <li><a href="../" rel="external"><img src="/media/images/logo/a.png" alt="Logo" width="162"
+                                                      height="129"></a>
+                </li>
+                <li><a href="../" rel="external"><img src="/media/images/logo/a.png" alt="Logo" width="162"
+                                                      height="129"></a>
+                </li>
+                <li><a href="../" rel="external"><img src="/media/images/logo/a.png" alt="Logo" width="162"
+                                                      height="129"></a>
+                </li>
+                <li><a href="../" rel="external"><img src="/media/images/logo/a.png" alt="Logo" width="162"
+                                                      height="129"></a>
+                </li>
+                <li><a href="../" rel="external"><img src="/media/images/logo/a.png" alt="Logo" width="162"
+                                                      height="129"></a>
+                </li>
+            </ul>
+        </footer>
+    </section>
+    <!-- Content area end -->
+    <!-- Footer starts -->
+    <footer id="footer">
+        <article id="info">
+            <div class="vcard">
+                <h3>Informações de Contato:</h3>
+                <h4 class="fn org">Bolos da Lu</h4>
+
+                <p class="tel">9876.543.210</p>
+
+                <p><a class="email">info//loremipsum/com</a></p>
+
+                <p class="adr"><span class="locality">London</span>, <span class="street-address">Street 28/A</span></p>
+            </div>
+            <div>
+                <h3>Torne-se nosso amigo:</h3>
+                <ul class="social-a">
+                    <li class="fb"><a rel="external" href="../">siga-nos no Facebook</a></li>
+                </ul>
+            </div>
+        </article>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="../">Sobre Nós</a></li>
+                <li><a href="../">Serviços</a></li>
+                <li><a href="../">Galeria</a></li>
+                <li><a href="../">Depoimentos</a></li>
+                <li><a href="../">Contato</a></li>
+            </ul>
+            <p>copyright: <a href="../">bolosdalu.com.br</a> <span class="date"></span></p>
+        </nav>
+    </footer>
+</div>
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;language=en"></script>
+<script src="/media/javascript/jquery-1.7.2.min.js"></script>
+<script src="/media/javascript/myscript.js"></script>
+<script type="text/javascript">
+    head.js('http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', '/media/javascript/scripts.js', '/media/javascript/mobile.js')
+</script>
+</body>
+</html>

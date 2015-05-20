@@ -1,7 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'abstractions/base.html' %}
 
 {% block title %}
     Bolos da Lu - Home
+{% endblock %}
+
+{% block header %}
+    {% include 'abstractions/header-top.html' %}
 {% endblock %}
 
 {% block content %}
@@ -13,8 +17,6 @@
                                          height="161"></figure>
             <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
                 ut liber tempor laoreet consuetudium.</p>
-
-            <p class="link-a"><a href="./">Leia Mais</a></p>
         </div>
         <div>
             <h2>Cupcakes</h2>
@@ -22,8 +24,6 @@
                                          height="161"></figure>
             <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
                 ut liber tempor laoreet consuetudium.</p>
-
-            <p class="link-a"><a href="./">Leia Mais</a></p>
         </div>
         <div>
             <h2>Tortas</h2>
@@ -31,8 +31,6 @@
                                          height="161"></figure>
             <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
                 ut liber tempor laoreet consuetudium.</p>
-
-            <p class="link-a"><a href="./">Leia Mais</a></p>
         </div>
     </article>
 {% endblock %}
