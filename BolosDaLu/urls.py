@@ -3,7 +3,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from BolosDaLu import settings
-from bolosdaluapp.views import index_view, about_view, services_view, gallery_view, testimonials_view
+from bolosdaluapp.views import index_view, about_view, services_view, gallery_view, testimonials_view, contact_view
 
 admin.autodiscover()
 urlpatterns = patterns('',
@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^servicos/', services_view.init),
     url(r'^galeria/', gallery_view.init),
     url(r'^depoimentos/', testimonials_view.init),
+    url(r'^contato/', contact_view.init),
 )
 
 

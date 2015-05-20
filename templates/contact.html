@@ -1,0 +1,65 @@
+{% extends 'abstracts/base.html' %}
+
+{% block title %}
+    Bolos da Lu - Contato
+{% endblock %}
+
+{% block header %}
+    {% include 'abstracts/header-contact.html' %}
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" name="page" value="contato">
+    <article class="content">
+        <div class="cols-a">
+            <article>
+                <h3>Contato</h3>
+                <div id="alert">
+                    <div class="message"></div>
+                </div>
+
+                <form onSubmit="return submitForm();" action="" method="post" class="form-a" name="homefrm1"
+                      id="homefrm1">
+                    <input type="hidden" name="event" value="start"/>
+                    <fieldset>
+                        <legend>Envie-nos um e-mail:</legend>
+                        <p>
+									<span>
+										<label for="ca">Your name:</label>
+										<input type="text" id="ca" name="name" required>
+									</span>
+									<span>
+										<label for="cb">Your email:</label>
+										<input type="text" id="cb" name="email" required>
+									</span>
+                        </p>
+
+                        <p>
+                            <label for="cd">Subject:</label>
+                            <input name="subject" type="text" id="cd" required>
+                        </p>
+
+                        <p>
+                            <label for="cc">Message:</label>
+                            <textarea id="cc" name="msg" required></textarea>
+                        </p>
+
+                        <p>
+                            <button type="submit">Send</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </article>
+            <aside class="vcard">
+                <h3>Contact Info:</h3>
+                <h4 class="fn org">Just the best CAKES company</h4>
+
+                <p class="tel">9876.543.210</p>
+
+                <p><a class="email">info//loremipsum/com</a></p>
+
+                <p class="adr"><span class="locality">London</span>, <span class="street-address">Street 28/A</span></p>
+            </aside>
+        </div>
+    </article>
+{% endblock %}
