@@ -7,19 +7,18 @@ from bolosdaluapp.views import index_view, about_view, services_view, gallery_vi
 
 admin.autodiscover()
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'BolosDaLu.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+                       # Examples:
+                       # url(r'^$', 'BolosDaLu.views.home', name='home'),
+                       # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', index_view.init),
-    url(r'^sobre/', about_view.init),
-    url(r'^servicos/', services_view.init),
-    url(r'^galeria/', gallery_view.init),
-    url(r'^depoimentos/', testimonials_view.init),
-    url(r'^contato/', contact_view.init),
+                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^$', index_view.init),
+                       url(r'^sobre/', about_view.init),
+                       url(r'^servicos/', services_view.init),
+                       url(r'^galeria/', gallery_view.init),
+                       url(r'^depoimentos/', testimonials_view.init),
+                       url(r'^contato/', contact_view.init),
 )
-
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
