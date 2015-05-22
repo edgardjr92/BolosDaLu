@@ -4879,8 +4879,14 @@ svg:not(:root) {
     position: absolute;
 }
 
+#clean {
+   margin-left: 550px;
+}
+
+
 .inputFile input {
-    width: 600px;
+    margin-right: 200px;
+    width: 400px;
     position: absolute;
     right: 0;
     z-index: 2;

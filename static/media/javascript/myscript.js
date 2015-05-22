@@ -10,6 +10,11 @@ $("#arquivo").change(function () {
     $(this).prev().html($(this).val());
 });
 
+$('#clean').click(function(){
+    var valueEmpty = 'Selecione uma foto:'
+    $('#arquivo').prev().html(valueEmpty);
+});
+
 
 $('.link-gallery').click(function () {
     closeAlbums();
