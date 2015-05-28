@@ -18,8 +18,3 @@ class Conteudo(models.Model):
     class Meta:
         db_table = 'conteudo'
         app_label = 'bolosdaluapp'
-
-
-@receiver(request_started)
-def teste(sender,**kwargs):
-    print 'passou'

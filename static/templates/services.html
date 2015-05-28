@@ -14,46 +14,15 @@
         <h2>Serviços</h2>
 
         <div class="news-c">
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Bolos</h3>
+            {% for servico in servicos %}
+                <article>
+                    <figure><img src="/static/{{ servico.imagem }}" alt="{{ servico.titulo }}" width="258" height="180">
+                    </figure>
+                    <h3>{{ servico.titulo }}</h3>
 
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k-1.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Tortas</h3>
-
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Cupcake</h3>
-
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Mini Bolos</h3>
-
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Doces</h3>
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
-            <article>
-                <figure><img src="/static/media/temp/placeholder-k.png" alt="Placeholder" width="258" height="180"></figure>
-                <h3>Salgados</h3>
-                <p>Lorem ipsum dolor sit amet, cons ect etuer adipisc in elit, sed diam nonum my nibh in
-                    euismod...</p>
-            </article>
+                    <p>{{ servico.descricao }}</p>
+                </article>
+            {% endfor %}
         </div>
     </article>
 {% endblock %}

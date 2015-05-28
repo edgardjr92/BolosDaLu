@@ -15,67 +15,52 @@
 
         <div id="albums">
             <div class="news-c">
-                <article>
-                    <figure><a class="link-gallery"><img src="/static/media/temp/placeholder-k.png" alt="Placeholder"
-                                                         width="258" height="180">
-                    </a></figure>
-                    <h3>Aniversário</h3>
+                {% for album in albuns %}
+                    <article>
+                        <figure><a class="link-gallery" href="/fotos/{{ album.id }}/"><img src="/static/{{ album.get_src_first_foto }}"
+                                                             alt="{{ album.get_legenda_first_foto }}"
+                                                             width="258" height="180">
+                        </a></figure>
+                        <h3>{{ album.titulo }}</h3>
 
-                    <p>12 fotos</p>
-                </article>
-                <article>
-                    <figure><a class="link-gallery"><img src="/static/media/temp/placeholder-k-1.png" alt="Placeholder"
-                                                         width="258" height="180">
-                    </a></figure>
-                    <h3>Casamento</h3>
-
-                    <p>12 fotos</p>
-                </article>
-                <article>
-                    <figure><a class="link-gallery"><img src="/static/media/temp/placeholder-k.png" alt="Placeholder"
-                                                         width="258" height="180">
-                    </a></figure>
-                    <h3>Infantis</h3>
-
-                    <p>12 fotos</p>
-                </article>
-                <article>
-                    <figure><a class="link-gallery"><img src="/static/media/temp/placeholder-k.png" alt="Placeholder"
-                                                         width="258" height="180">
-                    </a></figure>
-                    <h3>Mini Bolos</h3>
-
-                    <p>12 fotos</p>
-                </article>
+                        <p>{{ album.get_fotos_quantity }} fotos</p>
+                    </article>
+                {% endfor %}
             </div>
         </div>
 
         <div id="pictures">
             <article id="content">
                 <ul class="gallery-a">
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder"
-                                                          width="252"
-                                                          height="161">
+                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
+                                                                 alt="Placeholder"
+                                                                 width="252"
+                                                                 height="161">
                         Weding cake No. 1</a></li>
                 </ul>
             </article>
