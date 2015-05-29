@@ -10,15 +10,14 @@ $("#arquivo").change(function () {
     $(this).prev().html($(this).val());
 });
 
-$('#clean').click(function(){
+$('#clean').click(function () {
     var valueEmpty = 'Selecione uma foto:'
     $('#arquivo').prev().html(valueEmpty);
 });
 
 
-$('.link-gallery').click(function () {
-    closeAlbums();
-    showPictures();
+$('.link-gallery').click(function (event) {
+    getFotos($(this));
 });
 
 $('#backAlbums').click(function (event) {
@@ -96,4 +95,51 @@ function isHidden(id) {
         isHidden = true;
     }
     return isHidden;
+}
+
+function getFotos(self) {
+    var url = self.attr("atr-url");
+
+    $.ajax({
+        url: url,
+        dataType: "json",
+        type: 'GET',
+        success: function (result) {
+            onAjaxSucess(result);
+        },
+        beforeSend: function () {
+//            onAjaxBeforeSend();
+        },
+        complete: function () {
+            onAjaxComplete();
+        }
+    });
+}
+
+function onAjaxSucess(data) {
+    if (data != '') {
+        $.each(data, function (key,value) {
+            $("#fotos").append(generateHtmlFotos(value));
+        });
+    }
+}
+
+
+function onAjaxComplete() {
+    closeAlbums();
+    showPictures();
+}
+
+function generateHtmlFotos(value) {
+    var html = '<li>' + '<a href="/static/media/temp/a.html" rel="a">' +
+        '<span class="wrapper">' +
+        '<img src="/static/media/temp/placeholder-d.png"' +
+        ' alt="Placeholder" width="252"  height="161">' +
+        '<div class="shade-a"></div>' +
+        '<div class="shade-b"></div>' +
+        '<div class="shade-c"></div>' +
+        '</span>' +
+        value.fields.legenda + '</a></li>'
+
+    return html
 }

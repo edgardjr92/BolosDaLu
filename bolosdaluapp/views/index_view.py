@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 
 def init(request):
     try:
-        informacoes_contato = InformacoesContato.objects.get(pk=1)
+        informacoes_contato = InformacoesContato.objects.get(pk=-1)
     except ObjectDoesNotExist:
         print 'error'
 

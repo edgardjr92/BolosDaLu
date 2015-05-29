@@ -18,7 +18,7 @@ urlpatterns = patterns('',
                        url(r'^galeria/', gallery_view.init),
                        url(r'^depoimentos/', testimonials_view.init),
                        url(r'^contato/', contact_view.init),
-                       url(r'^fotos/([0-9]{1}/)', contact_view.init),
+                       url(r'^fotos/([0-9]+)/', gallery_view.fotos),
 )
 
 urlpatterns += staticfiles_urlpatterns()
