@@ -10,26 +10,26 @@ class Album(models.Model):
 
         return fotos
 
-    def get_first_foto(self):
+    def get_last_foto(self):
         fotos = self.get_all_fotos()
-        first_foto = None
+        last_foto = None
 
         if (fotos):
-            first_foto = fotos.reverse()[0]
+            last_foto = fotos.reverse()[0]
 
-        return first_foto
+        return last_foto
 
-    def get_src_first_foto(self):
-        if self.get_first_foto():
-            src = self.get_first_foto().imagem
+    def get_src_last_foto_min(self):
+        if self.get_last_foto():
+            src = self.get_last_foto().imagem_min
         else:
-            src = 'media/temp/placeholder-k.png'
+            src = '/temp/placeholder-k.png'
 
         return src
 
-    def get_legenda_first_foto(self):
-        if self.get_first_foto():
-            legenda = self.get_first_foto().imagem
+    def get_legenda_last_foto(self):
+        if self.get_last_foto():
+            legenda = self.get_last_foto().legenda
         else:
             legenda = 'not contains photos'
 

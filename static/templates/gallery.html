@@ -18,14 +18,16 @@
                 {% for album in albuns %}
                     <article>
                         <figure><a class="link-gallery" href="#" atr-url="/fotos/{{ album.id }}/"><img
-                                src="/static/{{ album.get_src_first_foto }}"
-                                alt="{{ album.get_legenda_first_foto }}"
+                                src="/static/media/{{ album.get_src_last_foto_min }}"
+                                alt="{{ album.get_legenda_last_foto }}"
                                 width="258" height="180">
                         </a></figure>
                         <h3>{{ album.titulo }}</h3>
 
                         <p>{{ album.get_fotos_quantity }} fotos</p>
                     </article>
+                {% empty %}
+                     <p>Nenhuma Galeria Cadastrada</p>
                 {% endfor %}
             </div>
         </div>
@@ -33,11 +35,6 @@
         <div id="pictures">
             <article id="content">
                 <ul id="fotos" class="gallery-a">
-                    <li><a href="/static/media/temp/a.html"><img src="/static/media/temp/placeholder-d.png"
-                                                                 alt="Placeholder"
-                                                                 width="252"
-                                                                 height="161">
-                        Weding cake No. 1</a></li>
                 </ul>
             </article>
             <p class="link-a" id="backAlbums"><a href="#">voltar</a></p>

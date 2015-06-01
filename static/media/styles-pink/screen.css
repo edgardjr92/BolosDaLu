@@ -4847,6 +4847,7 @@ svg:not(:root) {
 }
 
 #pictures {
+    display: none;
     width: 952px;
 }
 
@@ -4893,3 +4894,5 @@ svg:not(:root) {
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
+

@@ -22,6 +22,8 @@
 
                     <p>{{ servico.descricao }}</p>
                 </article>
+             {% empty %}
+                <p>Nenhum Serviço Cadastrado</p>
             {% endfor %}
         </div>
     </article>

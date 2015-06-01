@@ -2,9 +2,8 @@ $(function () {
     backEventListener();
     deactivateMenu();
     activeMenu();
-    backToAlbums();
+//    backToAlbums();
 });
-
 
 $("#arquivo").change(function () {
     $(this).prev().html($(this).val());
@@ -18,6 +17,7 @@ $('#clean').click(function () {
 
 $('.link-gallery').click(function (event) {
     getFotos($(this));
+    event.preventDefault();
 });
 
 $('#backAlbums').click(function (event) {
@@ -99,42 +99,31 @@ function isHidden(id) {
 
 function getFotos(self) {
     var url = self.attr("atr-url");
-
-    $.ajax({
-        url: url,
-        dataType: "json",
-        type: 'GET',
-        success: function (result) {
-            onAjaxSucess(result);
-        },
-        beforeSend: function () {
-//            onAjaxBeforeSend();
-        },
-        complete: function () {
-            onAjaxComplete();
-        }
-    });
+    requestAjax(url, "json", "GET", getFotosAjaxSucess, getFotosAjaxComplete);
 }
 
-function onAjaxSucess(data) {
+function getFotosAjaxSucess(data) {
     if (data != '') {
-        $.each(data, function (key,value) {
+        $("#fotos > li").remove();
+        $.each(data, function (key, value) {
             $("#fotos").append(generateHtmlFotos(value));
         });
     }
 }
 
-
-function onAjaxComplete() {
+//exibe as fotos do album
+function getFotosAjaxComplete() {
     closeAlbums();
     showPictures();
 }
 
+//gera o html para criacao das fotos da galeria
 function generateHtmlFotos(value) {
-    var html = '<li>' + '<a href="/static/media/temp/a.html" rel="a">' +
+    var html = '<li>' + '<a href="/static/' + value.fields.imagem +
+        '" rel="lightbox[ultimas-fotos]"' + ' title="' + value.fields.legenda + '">'+
         '<span class="wrapper">' +
-        '<img src="/static/media/temp/placeholder-d.png"' +
-        ' alt="Placeholder" width="252"  height="161">' +
+        '<img src="/static/media/'+ value.fields.imagem_min +'"' +
+        ' alt="' + value.fields.legenda + '" width="252"  height="161">' +
         '<div class="shade-a"></div>' +
         '<div class="shade-b"></div>' +
         '<div class="shade-c"></div>' +
@@ -142,4 +131,22 @@ function generateHtmlFotos(value) {
         value.fields.legenda + '</a></li>'
 
     return html
+}
+
+//realiza uma requisicao ajax
+function requestAjax(url, dataType, type, functionSucess, functionComplete) {
+    $.ajax({
+        url: url,
+        dataType: dataType,
+        type: type,
+        success: function (result) {
+            functionSucess(result);
+        },
+        beforeSend: function () {
+//            onAjaxBeforeSend();
+        },
+        complete: function () {
+            functionComplete();
+        }
+    });
 }

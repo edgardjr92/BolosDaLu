@@ -23,7 +23,7 @@ def init(request):
 
 
 def fotos(request, id):
-    if id:
+    if request.is_ajax() and id:
         fotos = serializers.serialize('json', Foto.objects.filter(album=int(id)))
     else:
         return HttpResponseRedirect("/")
