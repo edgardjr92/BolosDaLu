@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Servico(models.Model):
-    imagem = ImageField(upload_to='media/images/uploads',
+    imagem = ImageField(upload_to='images/uploads',
                         blank=False, null=False)
     titulo = models.CharField(max_length=50, null=False, blank=False)
     descricao = models.TextField(max_length=300)

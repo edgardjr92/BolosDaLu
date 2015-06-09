@@ -6,7 +6,7 @@ class Album(models.Model):
     titulo = models.CharField(max_length=50, null=False, blank=False)
 
     def get_all_fotos(self):
-        fotos = self.foto_set.all()
+        fotos = self.fotos.all()
 
         return fotos
 

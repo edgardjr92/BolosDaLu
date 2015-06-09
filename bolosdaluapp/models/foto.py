@@ -8,10 +8,10 @@ from django.db import models
 
 class Foto(models.Model):
     legenda = models.CharField(max_length=100, null=False, blank=False)
-    imagem = ImageField(upload_to='media/images/uploads/galeria',
+    imagem = ImageField(upload_to='images/uploads/galeria',
                         blank=False, null=False)
     imagem_min = models.CharField(max_length=100)
-    album = models.ForeignKey(Album)
+    album = models.ForeignKey(Album, related_name='fotos')
 
     def save(self, *args, **kwargs):
         path_img_min = Util.create_small_image(self.imagem, 252, 161)

@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOTDIR = os.path.realpath(os.path.dirname(__file__))
 
@@ -57,13 +58,14 @@ WSGI_APPLICATION = 'BolosDaLu.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bolosdalu',                      # Or path to database file if using sqlite3.
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'bolosdalu',  # Or path to database file if using sqlite3.
         'USER': 'postgres',
         'PASSWORD': '123456',
         'HOST': 'localhost',
-        'PORT': '5432',                      # Set to empty string for default.
+        'PORT': '5432',  # Set to empty string for default.
     }
 }
 
@@ -80,23 +82,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-#MEDIA_ROOT = '/home/impacti/www/media'
-MEDIA_ROOT = os.path.join(BASE_DIR,  'static')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = '/static/'
-
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/empty/'
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -104,6 +94,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 
-TEMPLATE_DIRS = (
-    os.path.join(MEDIA_ROOT,  'templates'),
-)
+if DEBUG:
+    MEDIA_URL = '/static/media/'
+    MEDIA_ROOT = 'C:/Users/edgard.barbosa/PycharmProjects/BolosDaLu/static/media/'
+
+    TEMPLATE_DIRS = (
+        'C:/Users/edgard.barbosa/PycharmProjects/BolosDaLu/static/templates',
+    )

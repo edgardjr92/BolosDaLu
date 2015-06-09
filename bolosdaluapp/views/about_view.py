@@ -8,7 +8,7 @@ from bolosdaluapp.models.informacoes_contato import InformacoesContato
 
 def init(request):
     try:
-        conteudo = Conteudo.objects.get(pk=-1)
+        conteudo = Conteudo.objects.get(pk=1)
         informacoes_contato = InformacoesContato.objects.get(pk=-1)
     except ObjectDoesNotExist:
         print 'error'

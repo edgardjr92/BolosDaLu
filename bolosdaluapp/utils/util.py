@@ -20,6 +20,6 @@ class Util(object):
 
         img_min = img.resize((width, height), Image.NEAREST)
 
-        img_min.save(os.path.join(settings.MEDIA_ROOT) + '/media/' + name_img_min + Util.EXTENSION)
+        img_min.save(os.path.join(settings.MEDIA_ROOT) + name_img_min + Util.EXTENSION)
 
         return path_img_min

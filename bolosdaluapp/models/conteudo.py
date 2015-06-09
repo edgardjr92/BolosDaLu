@@ -8,7 +8,7 @@ from django.db import models
 
 class Conteudo(models.Model):
     descricao = models.TextField(max_length=2000, null=False, blank=False)
-    imagem = ImageField(upload_to='media/images/uploads',
+    imagem = ImageField(upload_to='images/uploads',
                         blank=False, null=False)
 
 

@@ -14,7 +14,7 @@ from django.shortcuts import render_to_response
 def init(request):
     try:
         informacoes_contato = InformacoesContato.objects.get(pk=-1)
-        albuns = Album.objects.all()
+        albuns = Album.objects.prefetch_related('fotos').all()
     except ObjectDoesNotExist:
         print 'error'
 

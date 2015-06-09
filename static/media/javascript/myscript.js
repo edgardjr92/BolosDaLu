@@ -119,7 +119,7 @@ function getFotosAjaxComplete() {
 
 //gera o html para criacao das fotos da galeria
 function generateHtmlFotos(value) {
-    var html = '<li>' + '<a href="/static/' + value.fields.imagem +
+    var html = '<li>' + '<a href="/static/media/' + value.fields.imagem +
         '" rel="lightbox[ultimas-fotos]"' + ' title="' + value.fields.legenda + '">'+
         '<span class="wrapper">' +
         '<img src="/static/media/'+ value.fields.imagem_min +'"' +
