@@ -32,16 +32,18 @@
     <!-- Footer starts -->
     <footer id="footer">
         <article id="info">
-            <div class="vcard">
-                <h3>Informações de Contato:</h3>
-                <h4 class="fn org">Bolos da Lu</h4>
+            {% if contato %}
+                <div class="vcard">
+                    <h3>Informações de Contato:</h3>
+                    <h4 class="fn org">Bolos da Lu</h4>
 
-                <p class="tel">{{ contato.telefone }}</p>
+                    <p class="tel">{{ contato.telefone }}</p>
 
-                <p><a class="email">{{ contato.email }}</a></p>
+                    <p><a class="email">{{ contato.email }}</a></p>
 
-                <p class="adr">{{ contato.endereco }}</p>
-            </div>
+                    <p class="adr">{{ contato.endereco }}</p>
+                </div>
+            {% endif %}
             <div>
                 <h3>Torne-se nosso amigo:</h3>
                 <ul class="social-a">

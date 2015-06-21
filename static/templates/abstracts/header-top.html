@@ -25,25 +25,33 @@
     <!-- Welcome text in slider -->
 
     <div id="featured">
-        <div>
-            <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
-            </figure>
-        </div>
-        <div>
-            <figure><img src="/static/media/temp/placeholder-n-1.png" alt="Placeholder" width="950" height="340">
-            </figure>
-        </div>
-        <div>
-            <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
-            </figure>
-        </div>
-        <div>
-            <figure><img src="/static/media/temp/placeholder-n-1.png" alt="Placeholder" width="950" height="340">
-            </figure>
-        </div>
-        <div>
-            <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
-            </figure>
-        </div>
+        {% for banner in banners %}
+            <div>
+                <figure><img src="/static/media/{{ banner.imagem }}" alt="{{ banner.legenda }}" width="950"
+                             height="340">
+                </figure>
+            </div>
+        {% empty %}
+            <div>
+                <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
+                </figure>
+            </div>
+            <div>
+                <figure><img src="/static/media/temp/placeholder-n-1.png" alt="Placeholder" width="950" height="340">
+                </figure>
+            </div>
+            <div>
+                <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
+                </figure>
+            </div>
+            <div>
+                <figure><img src="/static/media/temp/placeholder-n-1.png" alt="Placeholder" width="950" height="340">
+                </figure>
+            </div>
+            <div>
+                <figure><img src="/static/media/temp/placeholder-n.png" alt="Placeholder" width="950" height="340">
+                </figure>
+            </div>
+        {% endfor %}
     </div>
 </header>

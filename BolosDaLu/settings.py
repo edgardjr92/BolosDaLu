@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ROOTDIR = os.path.realpath(os.path.dirname(__file__))
@@ -37,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
+    'image_cropping',
     'bolosdaluapp',
 )
 
@@ -47,11 +50,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'BolosDaLu.urls'
 
 WSGI_APPLICATION = 'BolosDaLu.wsgi.application'
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 
 # Database
@@ -72,7 +80,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -93,11 +101,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request'
 )
 
-
 if DEBUG:
     MEDIA_URL = '/static/media/'
-    MEDIA_ROOT = 'C:/Users/edgard.barbosa/PycharmProjects/BolosDaLu/static/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/')
 
     TEMPLATE_DIRS = (
-        'C:/Users/edgard.barbosa/PycharmProjects/BolosDaLu/static/templates',
+        os.path.join(BASE_DIR, 'static/templates'),
     )

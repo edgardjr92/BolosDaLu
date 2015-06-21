@@ -103,8 +103,8 @@ function getFotos(self) {
 }
 
 function getFotosAjaxSucess(data) {
+    $("#fotos > li").remove();
     if (data != '') {
-        $("#fotos > li").remove();
         $.each(data, function (key, value) {
             $("#fotos").append(generateHtmlFotos(value));
         });

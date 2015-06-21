@@ -4,6 +4,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from BolosDaLu import settings
 from bolosdaluapp.views import index_view, about_view, services_view, gallery_view, testimonials_view, contact_view
+from bolosdaluapp.views.about_view import AboutView
+from bolosdaluapp.views.contact_view import ContactView
+from bolosdaluapp.views.gallery_view import GalleryView
+from bolosdaluapp.views.index_view import IndexView
+from bolosdaluapp.views.services_view import ServicesView
+from bolosdaluapp.views.testimonials_view import TestimonialsView
 
 admin.autodiscover()
 urlpatterns = patterns('',
@@ -12,13 +18,13 @@ urlpatterns = patterns('',
                        # url(r'^blog/', include('blog.urls')),
 
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^$', index_view.init),
-                       url(r'^sobre/', about_view.init),
-                       url(r'^servicos/', services_view.init),
-                       url(r'^galeria/', gallery_view.init),
-                       url(r'^depoimentos/', testimonials_view.init),
-                       url(r'^contato/', contact_view.init),
-                       url(r'^fotos/([0-9]+)/', gallery_view.fotos),
+                       url(r'^$', IndexView.as_view()),
+                       url(r'^sobre/', AboutView.as_view()),
+                       url(r'^servicos/', ServicesView.as_view()),
+                       url(r'^galeria/', GalleryView.as_view()),
+                       url(r'^depoimentos/', TestimonialsView.as_view()),
+                       url(r'^contato/', ContactView.as_view()),
+                       url(r'^fotos/([0-9]+)/', GalleryView.fotos),
 )
 
 urlpatterns += staticfiles_urlpatterns()

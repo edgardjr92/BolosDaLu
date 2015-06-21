@@ -12,11 +12,14 @@
     <input type="hidden" name="page" value="sobre">
     <article class="module-a">
         <h2>Sobre Nós</h2>
-
-        <p>{{ conteudo.descricao }}</p>
-        <figure class="image-a">
-            <img alt="Placeholder" width="252" height="283" src="/static/media/{{ conteudo.imagem }}">
-            <figcaption>Luzia Marques :)</figcaption>
-        </figure>
+        {% if conteudo %}
+            <p>{{ conteudo.descricao }}</p>
+            <figure class="image-a">
+                <img width="252" height="283" src="/static/media/{{ conteudo.imagem }}">
+                <figcaption>Luzia Marques :)</figcaption>
+            </figure>
+        {% else %}
+            <p>Nenhum Conteúdo Cadastrado</p>
+        {% endif %}
     </article>
 {% endblock %}

@@ -4895,4 +4895,8 @@ svg:not(:root) {
     filter: alpha(opacity=0);
 }
 
+#services{
+    min-height: 275px;
+    max-height: 275px;
+}
 
