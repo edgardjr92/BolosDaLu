@@ -3,9 +3,9 @@
 
 	Name: 		Just the best Cakes
 	Date:		2012/11/25
-	Author:		Templatation	
+	Author:		Templatation
 				http://templatation.com
-			   		   
+
 ---------------------------------------------  */
 * {
     margin: 0;
@@ -4880,10 +4880,13 @@ svg:not(:root) {
     position: absolute;
 }
 
-#clean {
-   margin-left: 550px;
+#depoimentos ul li{
+    padding: 0 0 5px 0;
 }
 
+#clean {
+    margin-left: 550px;
+}
 
 .inputFile input {
     margin-right: 200px;
@@ -4895,8 +4898,33 @@ svg:not(:root) {
     filter: alpha(opacity=0);
 }
 
-#services{
+#services {
     min-height: 275px;
     max-height: 275px;
 }
 
+#alert {
+    display: none; /* O alerta deve iniciar oculto */
+    width: 962px;
+    height: 25px;
+    overflow: hidden;
+    z-index: 999999;
+    padding: 15px 0 10px 0;
+    margin: 0 auto;
+}
+
+#alert p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin-left: 10px;
+    color: #6d6760;
+}
+
+.alert-error {
+    background-color: #e74c3c;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+}

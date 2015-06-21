@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from bolosdaluapp.admins.banner_admin import BannerAdmin
+from bolosdaluapp.admins.depoimento_admin import DepoimentoAdmin
 from bolosdaluapp.admins.foto_admin import FotoAdmin
 from bolosdaluapp.models.album import Album
 from bolosdaluapp.models.banner import Banner
@@ -18,5 +19,5 @@ admin.site.register(InformacoesContato)
 admin.site.register(Servico)
 admin.site.register(Foto, FotoAdmin)
 admin.site.register(Conteudo)
-admin.site.register(Depoimento)
+admin.site.register(Depoimento, DepoimentoAdmin)
 admin.site.register(Cliente)

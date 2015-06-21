@@ -3,6 +3,7 @@ from django.core import serializers
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, HttpResponseRedirect
+from django.utils.decorators import classonlymethod
 
 from bolosdaluapp.models.album import Album
 
@@ -26,8 +27,8 @@ class GalleryView(AbstractView):
                                                    'contato': self.get_informacoes_contato()},
                                   RequestContext(request))
 
-    @staticmethod
-    def fotos(request, id):
+    @classonlymethod
+    def fotos(self, request, id):
         if request.is_ajax() and id:
             fotos = serializers.serialize('json', Foto.objects.filter(album=int(id)))
         else:

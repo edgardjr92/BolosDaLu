@@ -5,6 +5,56 @@ $(function () {
 //    backToAlbums();
 });
 
+$("#form_testimonials").submit(function (event) {
+    addDepoimento($(this));
+    event.preventDefault();
+
+});
+
+function addDepoimento(self) {
+    var data = self.serialize();
+    var url = self.attr('action');
+    var method = self.attr('method').toUpperCase();
+
+    requestAjax(url, "json", method, data, addDepoimentoAjaxSucess, addDepoimentoAjaxComplete);
+}
+
+
+function addDepoimentoAjaxSucess(data) {
+    if (data != '' && data == 'success') {
+        showAlert('success','Seu depoimento foi criado com sucesso, logo será aprovado.');
+    }else{
+        showAlert('error', 'Falha de acesso a dados.');
+    }
+}
+
+function addDepoimentoAjaxComplete() {
+    clearForm('#form_testimonials');
+}
+
+
+function clearForm(idForm) {
+    $(idForm).find("input[type=text],input[type=email], textarea").val("");
+}
+
+function showAlert(type, message) {
+    $('#alert').addClass('alert-' + type);
+    $('#alert p').html(message);
+    $('#alert').fadeIn();
+
+    setTimeout(closeAlert,10000);
+}
+
+$(function() {
+  $('#alert').click(function() {
+    closeAlert();
+  });
+});
+
+function closeAlert() {
+  $('#alert').fadeOut();
+}
+
 $("#arquivo").change(function () {
     $(this).prev().html($(this).val());
 });
@@ -99,7 +149,7 @@ function isHidden(id) {
 
 function getFotos(self) {
     var url = self.attr("atr-url");
-    requestAjax(url, "json", "GET", getFotosAjaxSucess, getFotosAjaxComplete);
+    requestAjax(url, "json", "GET", null, getFotosAjaxSucess, getFotosAjaxComplete);
 }
 
 function getFotosAjaxSucess(data) {
@@ -120,9 +170,9 @@ function getFotosAjaxComplete() {
 //gera o html para criacao das fotos da galeria
 function generateHtmlFotos(value) {
     var html = '<li>' + '<a href="/static/media/' + value.fields.imagem +
-        '" rel="lightbox[ultimas-fotos]"' + ' title="' + value.fields.legenda + '">'+
+        '" rel="lightbox[ultimas-fotos]"' + ' title="' + value.fields.legenda + '">' +
         '<span class="wrapper">' +
-        '<img src="/static/media/'+ value.fields.imagem_min +'"' +
+        '<img src="/static/media/' + value.fields.imagem_min + '"' +
         ' alt="' + value.fields.legenda + '" width="252"  height="161">' +
         '<div class="shade-a"></div>' +
         '<div class="shade-b"></div>' +
@@ -134,11 +184,12 @@ function generateHtmlFotos(value) {
 }
 
 //realiza uma requisicao ajax
-function requestAjax(url, dataType, type, functionSucess, functionComplete) {
+function requestAjax(url, dataType, method, data, functionSucess, functionComplete) {
     $.ajax({
         url: url,
         dataType: dataType,
-        type: type,
+        type: method,
+        data: data,
         success: function (result) {
             functionSucess(result);
         },

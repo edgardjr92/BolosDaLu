@@ -16,47 +16,38 @@
 
         <div class="cols-a">
             <article class="news-a">
-                <footer>
+                <footer id="depoimentos">
                     <ul>
-                        <li><span>Anna:</span> Lorem ipsum dolor sit amet, consectetuer adipisc in
-                            elit, sed diam non ummy nibh in euismod tincidunt ut liber tempor laoeet. Hil imperdiet
-                            doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam;
-                            est
-                            usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt
-                            lectores
-                            legere me lius quod ii legunt saepius.
-                        </li>
-                        <li><span>Anna:</span> Lorem ipsum dolor sit amet, consectetuer adipisc in
-                            elit, sed diam non ummy nibh in euismod tincidunt ut liber tempor laoeet. Hil imperdiet
-                            doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam;
-                            est
-                            usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt
-                            lectores
-                            legere me lius quod ii legunt saepius.
-                        </li>
+                        {% for depoimento in depoimentos %}
+                            <li><span>{{ depoimento.nome }}:</span> {{ depoimento.descricao }}
+                            </li>
+                        {% empty %}
+                            <p>Nenhum depoimento cadastrado.</p>
+                        {% endfor %}
                     </ul>
-                    <form action="" method="post" class="form-a">
-                        <fieldset>
-                            <legend>Escreva um novo depoimento:</legend>
-                            <p>
+                </footer>
+                <form id="form_testimonials" action="/add/" method="post" class="form-a">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Escreva um novo depoimento:</legend>
+                        <p>
 										<span>
 											<label for="ca">Seu nome:</label>
-											<input type="text" id="ca" name="ca" required>
+											<input type="text" id="ca" name="nome" required>
 										</span>
 										<span>
 											<label for="cb">Seu email:</label>
-											<input type="email" id="cb" name="cb" required>
+											<input type="email" id="cb" name="email" required>
 										</span>
-                            </p>
+                        </p>
 
-                            <p>
-                                <label for="cc">Mensagem:</label>
-                                <textarea id="cc" name="cc" required></textarea>
-                            </p>
-                            <button type="submit">Enviar</button>
-                        </fieldset>
-                    </form>
-                </footer>
+                        <p>
+                            <label for="cc">Mensagem:</label>
+                            <textarea id="cc" name="mensagem" required></textarea>
+                        </p>
+                        <button type="submit">Enviar</button>
+                    </fieldset>
+                </form>
             </article>
         </div>
     </article>

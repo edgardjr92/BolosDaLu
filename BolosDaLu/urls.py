@@ -25,6 +25,7 @@ urlpatterns = patterns('',
                        url(r'^depoimentos/', TestimonialsView.as_view()),
                        url(r'^contato/', ContactView.as_view()),
                        url(r'^fotos/([0-9]+)/', GalleryView.fotos),
+                       url(r'^add/', TestimonialsView.add),
 )
 
 urlpatterns += staticfiles_urlpatterns()
