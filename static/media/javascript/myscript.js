@@ -2,8 +2,85 @@ $(function () {
     backEventListener();
     deactivateMenu();
     activeMenu();
+    activeFirstPagination();
 //    backToAlbums();
 });
+
+
+$('.page').click(function (event) {
+    event.preventDefault();
+    var self = $(this);
+    var url = self.attr('href');
+    activeCurrentPagination(self);
+
+    requestAjax(url, 'json', 'GET', null, paginationAjaxSucess, paginationAjaxComplete);
+});
+
+$('.btn_page').click(function (event) {
+    event.preventDefault();
+    var self = $(this);
+    var url = self.attr('href');
+    var pageCurrent = url.split("/")[2]
+    activeCurrentPagination($('a[name='+ pageCurrent +']'));
+
+    requestAjax(url, 'json', 'GET', null, paginationAjaxSucess, paginationAjaxComplete);
+});
+
+
+function activeCurrentPagination(self) {
+    $('.pagination-a li').removeClass('active');
+    self.parent().addClass('active');
+}
+
+function activeFirstPagination() {
+    $('.pagination-a li').first().addClass('active');
+}
+
+function paginationAjaxSucess(data) {
+    $('#depoimentos li').remove();
+    if (data != '') {
+        $.each(data, function (key, value) {
+            $("#depoimentos").append(generateHtmlPagination(value));
+        });
+    }
+
+    createButtonsPagination();
+}
+
+function paginationAjaxComplete() {
+
+}
+
+function createButtonsPagination() {
+    var pageCurrent = $('.pagination-a li.active');
+
+    if (pageCurrent.children().html() != '1' && !exist("#prev")) {
+        $('.pagination-a').prepend('<li id="prev"><a class="page" href="' + pageCurrent.prev().children().attr('href') + '">Anterior</a></li>');
+    } else if (pageCurrent.children().html() != '1' && exist("#prev")) {
+        $('#prev').attr('href', pageCurrent.prev().children().attr('href'));
+    } else {
+        $('.pagination-a #prev').remove();
+    }
+
+    if(pageCurrent.next().children().html() == 'Próxima'){
+        $('.pagination-a #next').remove();
+    }else if(pageCurrent.next().children().html() != 'Próxima' && pageCurrent.next().children().html() != null && !exist("#next")){
+         $('.pagination-a').append('<li id="next"><a class="btn_page" href="' + pageCurrent.next().children().attr('href') + '">Próxima</a></li>');
+    }else{
+        $('#next').attr('href', pageCurrent.next().children().attr('href'));
+    }
+}
+
+
+function exist(id){
+    return $(id).length != 0
+}
+
+function generateHtmlPagination(value) {
+    var html = '<li><span>' + value.fields.nome + ':</span> ' + value.fields.descricao + '</li>'
+
+    return html
+}
 
 $("#form_testimonials").submit(function (event) {
     addDepoimento($(this));
@@ -22,8 +99,8 @@ function addDepoimento(self) {
 
 function addDepoimentoAjaxSucess(data) {
     if (data != '' && data == 'success') {
-        showAlert('success','Seu depoimento foi criado com sucesso, logo será aprovado.');
-    }else{
+        showAlert('success', 'Seu depoimento foi criado com sucesso, logo será aprovado.');
+    } else {
         showAlert('error', 'Falha de acesso a dados.');
     }
 }
@@ -42,17 +119,17 @@ function showAlert(type, message) {
     $('#alert p').html(message);
     $('#alert').fadeIn();
 
-    setTimeout(closeAlert,10000);
+    setTimeout(closeAlert, 10000);
 }
 
-$(function() {
-  $('#alert').click(function() {
-    closeAlert();
-  });
+$(function () {
+    $('#alert').click(function () {
+        closeAlert();
+    });
 });
 
 function closeAlert() {
-  $('#alert').fadeOut();
+    $('#alert').fadeOut();
 }
 
 $("#arquivo").change(function () {

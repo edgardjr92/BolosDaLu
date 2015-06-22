@@ -1,7 +1,7 @@
 __author__ = 'edgard.barbosa'
 from django.db import models
 
-STATUS = (('PENDENTE', 'Pendente'), ('REPROVADO', 'Reprovado'),
+STATUS = (('PENDENTE', 'Pendente'),
           ('APROVADO', 'Aprovado'))
 
 

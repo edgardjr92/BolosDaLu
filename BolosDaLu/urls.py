@@ -12,6 +12,7 @@ from bolosdaluapp.views.services_view import ServicesView
 from bolosdaluapp.views.testimonials_view import TestimonialsView
 
 admin.autodiscover()
+
 urlpatterns = patterns('',
                        # Examples:
                        # url(r'^$', 'BolosDaLu.views.home', name='home'),
@@ -26,8 +27,8 @@ urlpatterns = patterns('',
                        url(r'^contato/', ContactView.as_view()),
                        url(r'^fotos/([0-9]+)/', GalleryView.fotos),
                        url(r'^add/', TestimonialsView.add),
+                       url(r'^page/([0-9]+)/', TestimonialsView.page),
 )
-
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,22 +1,44 @@
 # -*- coding: utf-8 -*-
 import json
-from django.http.response import HttpResponse
+from django.core import serializers
+from django.core.paginator import Paginator
+
+from django.http.response import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.utils.decorators import classonlymethod
+
 from bolosdaluapp.models.depoimento import Depoimento
-from bolosdaluapp.views.abstract_view import AbstractView
+from bolosdaluapp.views.abstract_list_view import AbstractListView
 
 
 __author__ = 'Edgard JR'
-from django.template import RequestContext
-from django.shortcuts import render_to_response
 
 
-class TestimonialsView(AbstractView):
-    def get(self, request):
-        return render_to_response('testimonials.html',
-                                  {'depoimentos': self.get_depoimentos(), 'banners': self.get_banners(),
-                                   'contato': self.get_informacoes_contato()},
-                                  RequestContext(request))
+class TestimonialsView(AbstractListView):
+    model = Depoimento
+    template_name = 'testimonials.html'
+    queryset = Depoimento.objects.filter(status='APROVADO').order_by('-data_criacao')
+    context_object_name = 'depoimentos'
+    paginate_by = 2
+
+    def get_context_data(self, **kwargs):
+        context = super(TestimonialsView, self).get_context_data(**kwargs)
+        num_pages = context['page_obj'].paginator.page_range
+        context['qtd_pages'] = num_pages
+        context['banners'] = self.get_banners()
+        context['contato'] = self.get_informacoes_contato()
+
+        return context
+
+    @classonlymethod
+    def page(self, request, page):
+        depoimentos = TestimonialsView.queryset
+        paginator = Paginator(depoimentos, TestimonialsView.paginate_by)
+
+        if request.is_ajax() and page:
+            depoimentos = serializers.serialize('json', paginator.page(page))
+
+        return HttpResponse(depoimentos, content_type='application/json')
 
     @classonlymethod
     def add(self, request):
@@ -37,10 +59,6 @@ class TestimonialsView(AbstractView):
                 alert_msg = 'error'
 
         return HttpResponse(json.dumps(alert_msg), content_type='application/json')
-
-
-    def get_depoimentos(self):
-        return Depoimento.objects.filter(status='APROVADO').order_by('-data_criacao')
 
 
 

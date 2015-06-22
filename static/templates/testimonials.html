@@ -16,8 +16,8 @@
 
         <div class="cols-a">
             <article class="news-a">
-                <footer id="depoimentos">
-                    <ul>
+                <footer>
+                    <ul id="depoimentos">
                         {% for depoimento in depoimentos %}
                             <li><span>{{ depoimento.nome }}:</span> {{ depoimento.descricao }}
                             </li>
@@ -25,6 +25,41 @@
                             <p>Nenhum depoimento cadastrado.</p>
                         {% endfor %}
                     </ul>
+
+{#                    {% if is_paginated %}#}
+{#                        <div class="paginacao">#}
+{#                            <span class="paginacao-links">#}
+{#                                {% if page_obj.has_previous %}#}
+{#                                    <a href="?page={{ page_obj.previous_page_number }}">anterior</a>#}
+{#                                {% endif %}#}
+{#                                <span class="page-current">#}
+{#                                    P&aacute;gina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.#}
+{#                                </span>#}
+{#                                {% if page_obj.has_next %}#}
+{#                                    <a href="?page={{ page_obj.next_page_number }}">pr&oacute;xima</a>#}
+{#                                {% endif %}#}
+{#                            </span>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+
+                    {% if is_paginated %}
+                        <ol class="pagination-a">
+                            {% if page_obj.has_previous %}
+                                <li id="prev"><a class="btn_page" href="/page/{{ page_obj.previous_page_number }}">Anterior</a></li>
+                            {% endif %}
+                            {% for page in qtd_pages %}
+                                 <li><a class="page" href="/page/{{ page }}" name="{{ page }}">{{ page }}</a></li>
+{#                                <span class="page-current">#}
+{#                                   {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.#}
+{#                                </span>#}
+                             {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li id="next"><a class="btn_page" href="/page/{{ page_obj.next_page_number }}">Próxima</a></li>
+                            {% endif %}
+                        </ol>
+                    {% endif %}
+
+
                 </footer>
                 <form id="form_testimonials" action="/add/" method="post" class="form-a">
                     {% csrf_token %}
