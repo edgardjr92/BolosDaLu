@@ -4880,8 +4880,8 @@ svg:not(:root) {
     position: absolute;
 }
 
-#depoimentos ul li{
-    padding: 0 0 5px 0;
+#depoimentos li {
+    padding: 0 0 7px 0;
 }
 
 #clean {
@@ -4914,7 +4914,7 @@ svg:not(:root) {
 }
 
 #alert p {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     margin-left: 10px;
@@ -4927,4 +4927,8 @@ svg:not(:root) {
 
 .alert-success {
     background-color: #dff0d8;
+}
+
+.pagination-a #prev {
+    display: none;
 }

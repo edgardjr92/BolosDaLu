@@ -21,7 +21,7 @@ $('.btn_page').click(function (event) {
     var self = $(this);
     var url = self.attr('href');
     var pageCurrent = url.split("/")[2]
-    activeCurrentPagination($('a[name='+ pageCurrent +']'));
+    activeCurrentPagination($('a[name=' + pageCurrent + ']'));
 
     requestAjax(url, 'json', 'GET', null, paginationAjaxSucess, paginationAjaxComplete);
 });
@@ -33,7 +33,7 @@ function activeCurrentPagination(self) {
 }
 
 function activeFirstPagination() {
-    $('.pagination-a li').first().addClass('active');
+    $('.pagination-a li:eq(1)').first().addClass('active');
 }
 
 function paginationAjaxSucess(data) {
@@ -54,26 +54,30 @@ function paginationAjaxComplete() {
 function createButtonsPagination() {
     var pageCurrent = $('.pagination-a li.active');
 
-    if (pageCurrent.children().html() != '1' && !exist("#prev")) {
-        $('.pagination-a').prepend('<li id="prev"><a class="page" href="' + pageCurrent.prev().children().attr('href') + '">Anterior</a></li>');
-    } else if (pageCurrent.children().html() != '1' && exist("#prev")) {
-        $('#prev').attr('href', pageCurrent.prev().children().attr('href'));
-    } else {
-        $('.pagination-a #prev').remove();
+    if(hasPrev()){
+        $('#prev').children().attr('href', pageCurrent.prev().children().attr('href'));
+        $('#prev').css('display', 'inline');
+    }else{
+        $('#prev').hide();
     }
 
-    if(pageCurrent.next().children().html() == 'Próxima'){
-        $('.pagination-a #next').remove();
-    }else if(pageCurrent.next().children().html() != 'Próxima' && pageCurrent.next().children().html() != null && !exist("#next")){
-         $('.pagination-a').append('<li id="next"><a class="btn_page" href="' + pageCurrent.next().children().attr('href') + '">Próxima</a></li>');
+    if(hasNext()){
+        $('#next').children().attr('href', pageCurrent.next().children().attr('href'));
+        $('#next').show();
     }else{
-        $('#next').attr('href', pageCurrent.next().children().attr('href'));
+        $('#next').hide();
     }
 }
 
+function hasNext() {
+    var pageCurrent = $('.pagination-a li.active');
+    return pageCurrent.next().children().html() != 'Próxima' && pageCurrent.next().children().html() != null;
+}
 
-function exist(id){
-    return $(id).length != 0
+
+function hasPrev() {
+    var pageCurrent = $('.pagination-a li.active');
+    return pageCurrent.children().html() != '1'
 }
 
 function generateHtmlPagination(value) {

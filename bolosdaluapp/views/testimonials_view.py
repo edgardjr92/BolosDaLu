@@ -19,7 +19,7 @@ class TestimonialsView(AbstractListView):
     template_name = 'testimonials.html'
     queryset = Depoimento.objects.filter(status='APROVADO').order_by('-data_criacao')
     context_object_name = 'depoimentos'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(TestimonialsView, self).get_context_data(**kwargs)
