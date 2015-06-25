@@ -33,10 +33,11 @@ function validFile(valueFile) {
     switch (valueFile.substring(valueFile.lastIndexOf('.') + 1).toLowerCase()) {
         case 'jpg':
         case 'png':
+            closeAlert();
             break
         default :
             cleanInputFile();
-            showAlert('warning', 'formato de arquivo inválido.')
+            showAlert('warning', 'Formato de arquivo inválido.')
             break
     }
 }
