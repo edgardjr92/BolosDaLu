@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.core import serializers
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, HttpResponseRedirect
-from django.utils.decorators import classonlymethod
 
 from bolosdaluapp.models.album import Album
-
-from bolosdaluapp.models.foto import Foto
 from bolosdaluapp.views.abstract_view import AbstractView
 
 

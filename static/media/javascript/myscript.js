@@ -39,6 +39,18 @@ function getUrlParameter(sParam) {
     }
 }
 
+function validFile(valueFile) {
+    switch (valueFile.substring(valueFile.lastIndexOf('.') + 1).toLowerCase()) {
+        case 'jpg':
+        case 'png':
+            break
+        default :
+            cleanInputFile();
+            showAlert('error', 'formato de arquivo inválido.')
+            break
+    }
+}
+
 
 $("#form_testimonials").submit(function (event) {
     addDepoimento($(this));
@@ -94,13 +106,19 @@ function closeAlert() {
 
 $("#arquivo").change(function () {
     $(this).prev().html($(this).val());
+    validFile($(this).val())
 });
 
 $('#clean').click(function () {
+    cleanInputFile();
+});
+
+
+function cleanInputFile() {
     var valueEmpty = 'Selecione uma foto (JPEG ou PNG):'
     $('#arquivo').val('');
     $('#arquivo').prev().html(valueEmpty);
-});
+}
 
 
 // ativa o menu da pagina
