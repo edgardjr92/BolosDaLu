@@ -29,8 +29,7 @@ urlpatterns = patterns('',
                        url(r'^contato/$', ContactView.as_view()),
                        url(r'^galeria/fotos/([0-9]+)/', PicturesView.as_view()),
                        url(r'^add/', TestimonialsView.add),
-                       url(r'^contato/send/', ContactView.send_email),
-)
+                       url(r'^contato/send/', ContactView.send_email),)
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
