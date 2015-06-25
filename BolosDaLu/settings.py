@@ -70,6 +70,13 @@ DATABASES = {
     }
 }
 
+DEFAULT_FROM_EMAIL = 'santoos.ed@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'santoos.ed@gmail.com'
+EMAIL_HOST_PASSWORD = 'motherlodeem28'
+EMAIL_PORT = 587
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -82,6 +89,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 

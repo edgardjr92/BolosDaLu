@@ -990,13 +990,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin: 0 0 112px;
 }
 
-#content:after {
-    content: "";
-    display: block;
-    overflow: hidden;
-    clear: both;
-    height: 0;
-}
 
 #content > * {
     width: 950px;
@@ -1117,7 +1110,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 #info > * {
     float: left;
-    width: 207px;
+    width: 300px;
     padding: 0 30px 0 0;
 }
 
@@ -1248,7 +1241,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     position: relative;
     width: 100%;
     min-height: 400px;
-    margin-top: -20px !important;
     padding: 20px 0 7px;
     border: 1px solid #d7d4d4;
     background: #fff;
@@ -1280,7 +1272,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     position: relative;
     z-index: 2;
     float: right;
-    width: 260px;
+    width: 270px;
     padding: 0 20px 0 0;
     background: #fff;
 }
@@ -4847,7 +4839,6 @@ svg:not(:root) {
 }
 
 #pictures {
-    display: none;
     width: 952px;
 }
 
@@ -4885,7 +4876,11 @@ svg:not(:root) {
 }
 
 #clean {
-    margin-left: 550px;
+    float: right;
+}
+
+#value-empty {
+    float: left;
 }
 
 .inputFile input {
@@ -4904,7 +4899,7 @@ svg:not(:root) {
 }
 
 #alert {
-    display: none; /* O alerta deve iniciar oculto */
+    display: none;
     width: 962px;
     height: 25px;
     overflow: hidden;
@@ -4918,17 +4913,25 @@ svg:not(:root) {
     font-size: 14px;
     line-height: 1.42857143;
     margin-left: 10px;
-    color: #6d6760;
 }
 
 .alert-error {
-    background-color: #e74c3c;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }
 
 .alert-success {
+    color: #3c763d;
     background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
 
-.pagination-a #prev {
-    display: none;
+button:disabled {
+    background: #dddddd;
+}
+
+
+#lk_voltar{
+    font-size: 13px;
 }

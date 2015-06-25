@@ -1,6 +1,6 @@
 __author__ = 'edgard.barbosa'
 
-import informacoes_contato
+import contato
 import banner
 import album
 import conteudo

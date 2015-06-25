@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.list import ListView
 
 from bolosdaluapp.models.banner import Banner
-from bolosdaluapp.models.informacoes_contato import InformacoesContato
+from bolosdaluapp.models.contato import Contato
 
 
 __author__ = 'Edgard JR'
@@ -18,7 +18,7 @@ class AbstractListView(ListView):
     def get_informacoes_contato(self):
         informacoes = None
         try:
-            informacoes = InformacoesContato.objects.get(pk=-1)
+            informacoes = Contato.objects.get(pk=-1)
         except ObjectDoesNotExist:
             pass
 

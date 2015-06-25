@@ -27,12 +27,4 @@ class GalleryView(AbstractView):
                                                    'contato': self.get_informacoes_contato()},
                                   RequestContext(request))
 
-    @classonlymethod
-    def fotos(self, request, id):
-        if request.is_ajax() and id:
-            fotos = serializers.serialize('json', Foto.objects.filter(album=int(id)))
-        else:
-            return HttpResponseRedirect("/")
-
-        return HttpResponse(fotos, content_type='application/json')
 

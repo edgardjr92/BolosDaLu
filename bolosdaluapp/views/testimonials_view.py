@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
-from django.core import serializers
-from django.core.paginator import Paginator
 
-from django.http.response import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.http.response import HttpResponse
 from django.utils.decorators import classonlymethod
 
 from bolosdaluapp.models.depoimento import Depoimento
@@ -19,7 +16,7 @@ class TestimonialsView(AbstractListView):
     template_name = 'testimonials.html'
     queryset = Depoimento.objects.filter(status='APROVADO').order_by('-data_criacao')
     context_object_name = 'depoimentos'
-    paginate_by = 10
+    paginate_by = 15
 
     def get_context_data(self, **kwargs):
         context = super(TestimonialsView, self).get_context_data(**kwargs)
@@ -30,15 +27,15 @@ class TestimonialsView(AbstractListView):
 
         return context
 
-    @classonlymethod
-    def page(self, request, page):
-        depoimentos = TestimonialsView.queryset
-        paginator = Paginator(depoimentos, TestimonialsView.paginate_by)
-
-        if request.is_ajax() and page:
-            depoimentos = serializers.serialize('json', paginator.page(page))
-
-        return HttpResponse(depoimentos, content_type='application/json')
+    # @classonlymethod
+    # def page(self, request, page):
+    #     depoimentos = TestimonialsView.queryset
+    #     paginator = Paginator(depoimentos, TestimonialsView.paginate_by)
+    #
+    #     if request.is_ajax() and page:
+    #         depoimentos = serializers.serialize('json', paginator.page(page))
+    #
+    #     return HttpResponse(depoimentos, content_type='application/json')
 
     @classonlymethod
     def add(self, request):
@@ -59,8 +56,3 @@ class TestimonialsView(AbstractListView):
                 alert_msg = 'error'
 
         return HttpResponse(json.dumps(alert_msg), content_type='application/json')
-
-
-
-
-

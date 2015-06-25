@@ -11,11 +11,9 @@
 {% block content %}
     <input type="hidden" name="page" value="depoimentos">
     <!-- Content area start -->
-    <article class="module-content">
-        <h2>Depoimentos</h2>
-
         <div class="cols-a">
             <article class="news-a">
+            <h2>Depoimentos</h2>
                 <footer>
                     <ul id="depoimentos">
                         {% for depoimento in depoimentos %}
@@ -25,35 +23,21 @@
                             <p>Nenhum depoimento cadastrado.</p>
                         {% endfor %}
                     </ul>
-
-                    {#                    {% if is_paginated %}#}
-                    {#                        <div class="paginacao">#}
-                    {#                            <span class="paginacao-links">#}
-                    {#                                {% if page_obj.has_previous %}#}
-                    {#                                    <a href="?page={{ page_obj.previous_page_number }}">anterior</a>#}
-                    {#                                {% endif %}#}
-                    {#                                <span class="page-current">#}
-                    {#                                    P&aacute;gina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.#}
-                    {#                                </span>#}
-                    {#                                {% if page_obj.has_next %}#}
-                    {#                                    <a href="?page={{ page_obj.next_page_number }}">pr&oacute;xima</a>#}
-                    {#                                {% endif %}#}
-                    {#                            </span>#}
-                    {#                        </div>#}
-                    {#                    {% endif %}#}
-
                     {% if is_paginated %}
                         <ol class="pagination-a">
-                            <li id="prev"><a class="btn_page" href="/page/{{ page_obj.next_page_number }}">Anterior</a>
-                            </li>
+                            {% if page_obj.has_previous %}
+                                <li id="prev"><a class="btn_page"
+                                                 href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                                </li>
+                            {% endif %}
                             {% for page in qtd_pages %}
-                                <li><a class="page" href="/page/{{ page }}" name="{{ page }}">{{ page }}</a></li>
-                                {#                                <span class="page-current">#}
-                                {#                                   {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.#}
-                                {#                                </span>#}
+                                <li><a class="page"  name="{{ page }}" href="?page={{ page }}">{{ page }}</a></li>
                             {% endfor %}
-                            <li id="next"><a class="btn_page" href="/page/{{ page_obj.next_page_number }}">Próxima</a>
-                            </li>
+                            {% if page_obj.has_next %}
+                                <li id="next"><a class="btn_page"
+                                                 href="?page={{ page_obj.next_page_number }}">Próxima</a>
+                                </li>
+                            {% endif %}
                         </ol>
                     {% endif %}
 
@@ -65,17 +49,17 @@
                         <legend>Escreva um novo depoimento:</legend>
                         <p>
 										<span>
-											<label for="ca">Seu nome:</label>
-											<input type="text" id="ca" name="nome" required>
+											<label for="ca">Seu nome: *</label>
+											<input type="text" id="ca" name="nome" required autofocus>
 										</span>
 										<span>
-											<label for="cb">Seu email:</label>
+											<label for="cb">Seu email: *</label>
 											<input type="email" id="cb" name="email" required>
 										</span>
                         </p>
 
                         <p>
-                            <label for="cc">Mensagem:</label>
+                            <label for="cc">Mensagem: *</label>
                             <textarea id="cc" name="mensagem" required></textarea>
                         </p>
                         <button type="submit">Enviar</button>
@@ -83,6 +67,5 @@
                 </form>
             </article>
         </div>
-    </article>
     <!-- Content area end -->
 {% endblock %}

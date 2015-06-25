@@ -10,14 +10,14 @@
 
 {% block content %}
     <input type="hidden" name="page" value="galeria">
-    <article class="module-content">
+    <article id="albums" class="module-content">
         <h2>Galeria</h2>
 
-        <div id="albums">
+        <div>
             <div class="news-c">
                 {% for album in albuns %}
                     <article>
-                        <figure><a class="link-gallery" href="#" atr-url="/fotos/{{ album.id }}/"><img
+                        <figure><a class="link-gallery" href="/galeria/fotos/{{ album.id }}/"><img
                                 src="/static/media/{{ album.get_src_last_foto_min }}"
                                 alt="{{ album.get_legenda_last_foto }}"
                                 width="258" height="180">
@@ -27,17 +27,10 @@
                         <p>{{ album.get_fotos_quantity }} fotos</p>
                     </article>
                 {% empty %}
-                     <p>Nenhuma Galeria Cadastrada</p>
+                    <p>Nenhuma Galeria Cadastrada</p>
                 {% endfor %}
             </div>
         </div>
-
-        <div id="pictures">
-            <article id="content">
-                <ul id="fotos" class="gallery-a">
-                </ul>
-            </article>
-            <p class="link-a" id="backAlbums"><a href="#">voltar</a></p>
-        </div>
     </article>
+
 {% endblock %}
