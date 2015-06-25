@@ -22,8 +22,17 @@
     <!-- Header start -->
     {% block header %}
     {% endblock %}
-    <!-- Content area start -->
-    <div id="alert"><p></p></div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div {% if message.tags %} class="alert {{ message.tags }}"{% endif %}>
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+    <!-- Content area start-->
+    <div id="alert_ajax" class="alert"><p></p></div>
     <section id="content">
         {% block content %}
         {% endblock %}

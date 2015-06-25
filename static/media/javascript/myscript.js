@@ -5,16 +5,6 @@ $(function () {
     if (getCurrentPage() == 'depoimentos' || getCurrentPage() == 'galeria') {
         activePagination();
     }
-
-    if (getCurrentPage() == 'contato' && $('input[name=alert_msg]').val()) {
-        var alertMsg = $('input[name=alert_msg]').val();
-        if (alertMsg == 'success') {
-            showAlert('success', 'Seu email foi enviado com sucesso, logo entraremos em contato.');
-        } else {
-            showAlert('error', 'Falha ao enviar o email, tente novamente mais tarde.');
-        }
-    }
-
 });
 
 
@@ -46,7 +36,7 @@ function validFile(valueFile) {
             break
         default :
             cleanInputFile();
-            showAlert('error', 'formato de arquivo inválido.')
+            showAlert('warning', 'formato de arquivo inválido.')
             break
     }
 }
@@ -63,6 +53,7 @@ $("#form_contact").submit(function () {
     $('#send').attr('disabled', true);
 });
 
+
 function addDepoimento(self) {
     var data = self.serialize();
     var url = self.attr('action');
@@ -75,7 +66,7 @@ function addDepoimentoAjaxSucess(data) {
     if (data != '' && data == 'success') {
         showAlert('success', 'Seu depoimento foi criado com sucesso, logo será aprovado.');
     } else {
-        showAlert('error', 'Falha de acesso a dados.');
+        showAlert('error', 'Falha de acesso a dados, tente novamente mais tarde.');
     }
 }
 
@@ -89,19 +80,18 @@ function clearForm(idForm) {
 }
 
 function showAlert(type, message) {
-    $('#alert').addClass('alert-' + type);
-    $('#alert p').html(message);
-    $('#alert').fadeIn();
+    $('#alert_ajax').addClass(type);
+    $('#alert_ajax p').html(message);
+    $('#alert_ajax').fadeIn();
 
-    setTimeout(closeAlert, 10000);
 }
 
-$('#alert').click(function () {
+$('.alert').click(function () {
     closeAlert();
 });
 
 function closeAlert() {
-    $('#alert').fadeOut();
+    $('.alert').fadeOut();
 }
 
 $("#arquivo").change(function () {

@@ -11,43 +11,43 @@
 {% block content %}
     <input type="hidden" name="page" value="depoimentos">
     <!-- Content area start -->
-        <div class="cols-a">
-            <article class="news-a">
+    <div class="cols-a">
+        <article class="news-a">
             <h2>Depoimentos</h2>
-                <footer>
-                    <ul id="depoimentos">
-                        {% for depoimento in depoimentos %}
-                            <li><span>{{ depoimento.nome }}:</span> {{ depoimento.descricao }}
+            <footer>
+                <ul id="depoimentos">
+                    {% for depoimento in depoimentos %}
+                        <li><span>{{ depoimento.nome }}:</span> {{ depoimento.descricao }}
+                        </li>
+                    {% empty %}
+                        <p>Nenhum depoimento cadastrado.</p>
+                    {% endfor %}
+                </ul>
+                {% if is_paginated %}
+                    <ol class="pagination-a">
+                        {% if page_obj.has_previous %}
+                            <li id="prev"><a class="btn_page"
+                                             href="?page={{ page_obj.previous_page_number }}">Anterior</a>
                             </li>
-                        {% empty %}
-                            <p>Nenhum depoimento cadastrado.</p>
+                        {% endif %}
+                        {% for page in qtd_pages %}
+                            <li><a class="page" name="{{ page }}" href="?page={{ page }}">{{ page }}</a></li>
                         {% endfor %}
-                    </ul>
-                    {% if is_paginated %}
-                        <ol class="pagination-a">
-                            {% if page_obj.has_previous %}
-                                <li id="prev"><a class="btn_page"
-                                                 href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-                                </li>
-                            {% endif %}
-                            {% for page in qtd_pages %}
-                                <li><a class="page"  name="{{ page }}" href="?page={{ page }}">{{ page }}</a></li>
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                                <li id="next"><a class="btn_page"
-                                                 href="?page={{ page_obj.next_page_number }}">Próxima</a>
-                                </li>
-                            {% endif %}
-                        </ol>
-                    {% endif %}
+                        {% if page_obj.has_next %}
+                            <li id="next"><a class="btn_page"
+                                             href="?page={{ page_obj.next_page_number }}">Próxima</a>
+                            </li>
+                        {% endif %}
+                    </ol>
+                {% endif %}
 
 
-                </footer>
-                <form id="form_testimonials" action="/add/" method="post" class="form-a">
-                    {% csrf_token %}
-                    <fieldset>
-                        <legend>Escreva um novo depoimento:</legend>
-                        <p>
+            </footer>
+            <form id="form_testimonials" action="/add/" method="post" class="form-a">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Escreva um novo depoimento:</legend>
+                    <p>
 										<span>
 											<label for="ca">Seu nome: *</label>
 											<input type="text" id="ca" name="nome" required autofocus>
@@ -56,16 +56,16 @@
 											<label for="cb">Seu email: *</label>
 											<input type="email" id="cb" name="email" required>
 										</span>
-                        </p>
+                    </p>
 
-                        <p>
-                            <label for="cc">Mensagem: *</label>
-                            <textarea id="cc" name="mensagem" required></textarea>
-                        </p>
-                        <button type="submit">Enviar</button>
-                    </fieldset>
-                </form>
-            </article>
-        </div>
+                    <p>
+                        <label for="cc">Mensagem: *</label>
+                        <textarea id="cc" name="mensagem" required></textarea>
+                    </p>
+                    <button type="submit">Enviar</button>
+                </fieldset>
+            </form>
+        </article>
+    </div>
     <!-- Content area end -->
 {% endblock %}

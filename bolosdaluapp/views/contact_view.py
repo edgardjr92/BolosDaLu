@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from PIL import Image
+from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -19,7 +20,6 @@ class ContactView(AbstractView):
 
     @classonlymethod
     def send_email(cls, request):
-        alert_msg = 'success'
         view = ContactView()
 
         if request.POST and view._valid_form(request):
@@ -36,11 +36,12 @@ class ContactView(AbstractView):
                     email.attach(file.name, file.read(), file.content_type)
 
                 email.send()
+                messages.success(request, 'Seu email foi enviado com sucesso, logo entraremos em contato.')
             except Exception:
-                alert_msg = 'error'
+                messages.error(request, 'Falha ao envar o email, tente novamente mais tarde.')
 
         else:
-            alert_msg = 'error'
+            messages.warning(request, 'Verifique se todos os campos estão preenchidos.')
 
         return HttpResponseRedirect('/contato/')
 

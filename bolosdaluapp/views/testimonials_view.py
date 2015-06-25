@@ -38,7 +38,7 @@ class TestimonialsView(AbstractListView):
     #     return HttpResponse(depoimentos, content_type='application/json')
 
     @classonlymethod
-    def add(self, request):
+    def add(cls, request):
         alert_msg = 'success'
         if request.POST:
             name = request.POST.get('nome')
