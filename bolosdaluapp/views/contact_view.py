@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from PIL import Image
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.template import RequestContext, Context
+from django.template.loader import get_template
 from django.utils.decorators import classonlymethod
 
 from bolosdaluapp.views.abstract_view import AbstractView
@@ -27,9 +27,15 @@ class ContactView(AbstractView):
             from_email = request.POST.get('email')
             subject = request.POST.get('assunto')
             msg = request.POST.get('msg')
+            html = get_template('email.html')
+
+            d = Context({'nome': name, 'email': from_email, 'assunto': subject, 'mensagem': msg})
+
+            html_content = html.render(d)
 
             try:
-                email = EmailMessage(subject=subject, body=msg, to=['santoos.ed@gmail.com'])
+                email = EmailMessage(subject=subject, body=html_content, to=['santoos.ed@gmail.com'])
+                email.content_subtype = 'html'
 
                 if 'arquivo' in request.FILES:
                     file = request.FILES['arquivo']
