@@ -12,6 +12,8 @@ from bolosdaluapp.views.abstract_view import AbstractView
 
 __author__ = 'Edgard JR'
 
+ASSUNTO_DEFAULT = 'CONTATO BOLOS DA LU - '
+
 
 class ContactView(AbstractView):
     def get(self, request):
@@ -34,7 +36,7 @@ class ContactView(AbstractView):
             html_content = html.render(d)
 
             try:
-                email = EmailMessage(subject=subject, body=html_content, to=['santoos.ed@gmail.com'])
+                email = EmailMessage(subject=ASSUNTO_DEFAULT + subject, body=html_content, to=['santoos.ed@gmail.com'])
                 email.content_subtype = 'html'
 
                 if 'arquivo' in request.FILES:
