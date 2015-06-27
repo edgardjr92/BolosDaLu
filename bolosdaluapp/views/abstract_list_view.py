@@ -11,7 +11,7 @@ __author__ = 'Edgard JR'
 class AbstractListView(ListView):
 
     def get_banners(self):
-        banners = Banner.objects.all().order_by('pk')
+        banners = Banner.objects.all().order_by('-pk')
 
         return banners
 
