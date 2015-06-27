@@ -46,7 +46,7 @@ class ContactView(AbstractView):
 
                 email.send()
                 messages.success(request, 'Seu email foi enviado com sucesso, logo entraremos em contato.')
-            except Exception:
+            except Exception as e:
                 messages.error(request, 'Falha ao envar o email, tente novamente mais tarde.')
 
         else:

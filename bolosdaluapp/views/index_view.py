@@ -15,4 +15,4 @@ class IndexView(AbstractView):
                                   RequestContext(request))
 
     def get_all_services(self):
-        return Servico.objects.all()
+        return Servico.objects.all().order_by('pk')
