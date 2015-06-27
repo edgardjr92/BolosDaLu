@@ -5,6 +5,8 @@ from django.db.models import ImageField
 from bolosdaluapp.models.album import Album
 from django.db import models
 
+PATH_IMG = "images/uploads/galeria/"
+
 
 class Foto(models.Model):
     legenda = models.CharField(max_length=100, null=False, blank=False)
@@ -14,9 +16,9 @@ class Foto(models.Model):
     album = models.ForeignKey(Album, related_name='fotos')
 
     def save(self, *args, **kwargs):
-        path_img_min = Util.create_small_image(self.imagem, 252, 161)
-
-        self.imagem_min = path_img_min
+        if Util.is_new_image(self.imagem):
+            path_img_min = Util.create_small_image(self.imagem, 252, 161)
+            self.imagem_min = path_img_min
 
         super(Foto, self).save(*args, **kwargs)
 

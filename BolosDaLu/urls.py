@@ -9,7 +9,6 @@ from bolosdaluapp.views.contact_view import ContactView
 from bolosdaluapp.views.gallery_view import GalleryView
 from bolosdaluapp.views.index_view import IndexView
 from bolosdaluapp.views.pictures_view import PicturesView
-from bolosdaluapp.views.services_view import ServicesView
 from bolosdaluapp.views.testimonials_view import TestimonialsView
 
 
@@ -23,7 +22,6 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^$', IndexView.as_view()),
                        url(r'^sobre/', AboutView.as_view()),
-                       url(r'^servicos/', ServicesView.as_view()),
                        url(r'^galeria/$', GalleryView.as_view()),
                        url(r'^depoimentos/', TestimonialsView.as_view()),
                        url(r'^contato/$', ContactView.as_view()),

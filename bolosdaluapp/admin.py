@@ -1,8 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
+from django.contrib.auth.models import Group, User
 from bolosdaluapp.admins.banner_admin import BannerAdmin
 from bolosdaluapp.admins.contato_admin import ContatoAdmin
+from bolosdaluapp.admins.conteudo_admin import ConteudoAdmin
 from bolosdaluapp.admins.depoimento_admin import DepoimentoAdmin
 from bolosdaluapp.admins.foto_admin import FotoAdmin
 from bolosdaluapp.models.album import Album
@@ -19,6 +21,8 @@ admin.site.register(Banner, BannerAdmin)
 admin.site.register(Contato, ContatoAdmin)
 admin.site.register(Servico)
 admin.site.register(Foto, FotoAdmin)
-admin.site.register(Conteudo)
+admin.site.register(Conteudo, ConteudoAdmin)
 admin.site.register(Depoimento, DepoimentoAdmin)
 admin.site.register(Cliente)
+admin.site.unregister(Group)
+admin.site.unregister(User)

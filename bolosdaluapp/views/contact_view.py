@@ -36,7 +36,8 @@ class ContactView(AbstractView):
             html_content = html.render(d)
 
             try:
-                email = EmailMessage(subject=ASSUNTO_DEFAULT + subject, body=html_content, to=['santoos.ed@gmail.com'])
+                email = EmailMessage(subject=ASSUNTO_DEFAULT + subject, body=html_content,
+                                     to=['bolosdalu@bolosdalu.com.br'])
                 email.content_subtype = 'html'
 
                 if 'arquivo' in request.FILES:

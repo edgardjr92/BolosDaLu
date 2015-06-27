@@ -3148,11 +3148,17 @@ ul ul, ul ol, ol ol, ol ul {
     text-shadow: 0 1px 0 #2c467e;
 }
 
-.social-a li.tw a {
+.social-a li.is a {
     background-position: 3px -209px;
-    background-color: #43b1e4;
-    text-shadow: 0 1px 0 #368eb6;
+    background-color: #9a7f6b;
+    text-shadow: 0 1px 0 #202020;
 }
+
+/*.social-a li.tw a {*/
+/*background-position: 3px -209px;*/
+/*background-color: #43b1e4;*/
+/*text-shadow: 0 1px 0 #368eb6;*/
+/*}*/
 
 .social-a li.gp a {
     background-position: 2px -238px;
@@ -4586,6 +4592,7 @@ svg:not(:root) {
         float: none;
         margin-left: auto;
         margin-right: auto;
+        max-height: 161px;
     }
 
     .gallery-b > li {
@@ -4893,8 +4900,7 @@ svg:not(:root) {
 }
 
 #services {
-    min-height: 275px;
-    max-height: 275px;
+    min-height: 230px;
 }
 
 #alert_ajax {
@@ -4942,3 +4948,8 @@ button:disabled {
 #lk_voltar {
     font-size: 13px;
 }
+
+.link-gallery img {
+    margin: 0 auto;
+}
+

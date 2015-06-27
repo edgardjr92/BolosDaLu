@@ -6,7 +6,7 @@ from django.db import models
 
 
 class Banner(models.Model):
-    imagem = ImageField(upload_to='media/images/uploads',
+    imagem = ImageField(upload_to='images/uploads',
                         blank=False, null=False)
     legenda = models.CharField(max_length=100, null=False, blank=False)
 

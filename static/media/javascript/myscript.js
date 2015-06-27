@@ -73,6 +73,7 @@ function addDepoimentoAjaxSucess(data) {
 
 function addDepoimentoAjaxComplete() {
     clearForm('#form_testimonials');
+    cleanInputFile();
 }
 
 

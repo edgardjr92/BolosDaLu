@@ -4,18 +4,20 @@ from django.db import models
 
 class Album(models.Model):
     titulo = models.CharField(max_length=50, null=False, blank=False)
+    all_fotos = None
 
     def get_all_fotos(self):
-        fotos = self.fotos.all()
+        if not self.all_fotos:
+            self.all_fotos = self.fotos.all()
 
-        return fotos
+        return self.all_fotos
 
     def get_last_foto(self):
         fotos = self.get_all_fotos()
         last_foto = None
 
         if (fotos):
-            last_foto = fotos.reverse()[0]
+            last_foto = fotos.order_by('-id')[0]
 
         return last_foto
 

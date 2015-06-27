@@ -11,35 +11,36 @@
 {% block content %}
     <input type="hidden" name="page" value="galeria">
     <div>
-    <article id="content">
-        <ul id="fotos" class="gallery-a">
-            {% for picture in pictures %}
-                <li><a href="/static/media/{{ picture.imagem }}" rel="lightbox[galeria]"
-                       title="{{ picture.legenda }}"><img src="/static/media/{{ picture.imagem_min }}"
-                                                          alt="{{ picture.legenda }}" width="252"
-                                                          height="161"> {{ picture.legenda }}</a></li>
-            {% endfor %}
-        </ul>
-
-        {% if is_paginated %}
-            <ol class="pagination-a">
-                {% if page_obj.has_previous %}
-                    <li id="prev"><a class="btn_page"
-                                     href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        <article id="content">
+            <ul id="fotos" class="gallery-a">
+                {% for picture in pictures %}
+                    <li><a href="/static/media/{{ picture.imagem }}" rel="lightbox[galeria]"
+                           title="{{ picture.legenda }}"><img src="/static/media/{{ picture.imagem_min }}"
+                                                              alt="{{ picture.legenda }}"> {{ picture.legenda }}</a>
                     </li>
-                {% endif %}
-                {% for page in qtd_pages %}
-                    <li><a class="page" name="{{ page }}" href="?page={{ page }}">{{ page }}</a></li>
                 {% endfor %}
-                {% if page_obj.has_next %}
-                    <li id="next"><a class="btn_page"
-                                     href="?page={{ page_obj.next_page_number }}">Próxima</a>
-                    </li>
-                {% endif %}
-            </ol>
-        {% endif %}
-    </article>
-     <a id="lk_voltar" href="/galeria/">voltar</a>
+
+            </ul>
+
+            {% if is_paginated %}
+                <ol class="pagination-a">
+                    {% if page_obj.has_previous %}
+                        <li id="prev"><a class="btn_page"
+                                         href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
+                    {% for page in qtd_pages %}
+                        <li><a class="page" name="{{ page }}" href="?page={{ page }}">{{ page }}</a></li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li id="next"><a class="btn_page"
+                                         href="?page={{ page_obj.next_page_number }}">Próxima</a>
+                        </li>
+                    {% endif %}
+                </ol>
+            {% endif %}
+        </article>
+        <a id="lk_voltar" href="/galeria/">voltar</a>
     </div>
 
 {% endblock %}

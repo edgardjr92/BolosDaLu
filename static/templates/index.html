@@ -10,48 +10,39 @@
 
 {% block content %}
     <input type="hidden" name="page" value="home">
+
     <article class="triple-a">
-        <div>
-            <h2>Bolos Decorados</h2>
-            <figure class="image-a"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder" width="252"
-                                         height="161"></figure>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
-                ut liber tempor laoreet consuetudium.</p>
-        </div>
-        <div>
-            <h2>Cupcakes</h2>
-            <figure class="image-a"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder" width="252"
-                                         height="161"></figure>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
-                ut liber tempor laoreet consuetudium.</p>
-        </div>
-        <div>
-            <h2>Tortas</h2>
-            <figure class="image-a"><img src="/static/media/temp/placeholder-d.png" alt="Placeholder" width="252"
-                                         height="161"></figure>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipisc in elit, sed diam nonummy nibh in euismod tincidunt
-                ut liber tempor laoreet consuetudium.</p>
-        </div>
+        {% for servico in servicos %}
+            <div>
+                <h2>{{ servico.titulo }}</h2>
+                <figure class="image-a"><img src="/static/media/{{ servico.imagem }}" alt="{{ servico.titulo }}"
+                                             width="252"
+                                             height="161"></figure>
+                <p>{{ servico.descricao }}</p>
+            </div>
+        {% empty %}
+            <p>Nenhum Serviço Cadastrado</p>
+        {% endfor %}
     </article>
 
-   <!-- <footer id="logo">
-        <h2>Alguns de Nossos Clientes</h2>
-        <ul>
-            <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
-                                                  height="129"></a>
-            </li>
-            <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
-                                                  height="129"></a>
-            </li>
-            <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
-                                                  height="129"></a>
-            </li>
-            <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
-                                                  height="129"></a>
-            </li>
-            <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
-                                                  height="129"></a>
-            </li>
-        </ul>
-    </footer>-->
+    <!-- <footer id="logo">
+         <h2>Alguns de Nossos Clientes</h2>
+         <ul>
+             <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
+                                                   height="129"></a>
+             </li>
+             <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
+                                                   height="129"></a>
+             </li>
+             <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
+                                                   height="129"></a>
+             </li>
+             <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
+                                                   height="129"></a>
+             </li>
+             <li><a href="../" rel="external"><img src="/static/media/images/logo/a.png" alt="Logo" width="162"
+                                                   height="129"></a>
+             </li>
+         </ul>
+     </footer>-->
 {% endblock %}
