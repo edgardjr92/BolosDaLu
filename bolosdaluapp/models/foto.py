@@ -9,11 +9,12 @@ PATH_IMG = "images/uploads/galeria/"
 
 
 class Foto(models.Model):
-    legenda = models.CharField(max_length=100, null=False, blank=False)
+    legenda = models.CharField(max_length=100, null=True, blank=True)
     imagem = ImageField(upload_to='images/uploads/galeria',
                         blank=False, null=False)
     imagem_min = models.CharField(max_length=100)
     album = models.ForeignKey(Album, related_name='fotos')
+    data_postagem = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def save(self, *args, **kwargs):
         if Util.is_new_image(self.imagem):

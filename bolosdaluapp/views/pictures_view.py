@@ -23,4 +23,4 @@ class PicturesView(AbstractListView):
         return context
 
     def get_queryset(self):
-        return Foto.objects.filter(album=self.args[0])
+        return Foto.objects.filter(album=self.args[0]).order_by("-pk")
